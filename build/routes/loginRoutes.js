@@ -11,22 +11,6 @@ function auth(req, res, next) {
     }
     res.status(403).json({ message: "Not permitted" });
 }
-router.get('/login', (req, res) => {
-    res.send(`
-        <form method="POST" action="/login">
-            <div>
-                <label>Email</label>
-                <input name="email" />
-            </div>
-            <div>
-            <label>Password</label>
-            <input name="password" type="password" />
-        </div>
-        <button>Submit</button>
-        </form>
-       
-        `);
-});
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
     if (email && password && email === 'godwin2341@gmail.com' && password === 'kingsly7') {
@@ -63,5 +47,5 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 });
 router.get('/protected', auth, (req, res) => {
-    res.send('Welcome to protected route, logged in user');
+    res.send('Welcome to protected route, logged in');
 });

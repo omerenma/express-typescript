@@ -1,7 +1,9 @@
  import express from 'express'
 import bodyParser from 'body-parser'
 import  {router} from './routes/loginRoutes'
+import {router as controllerRouter} from './controllers/decorators/controller'
 import cookieSession from 'cookie-session';
+import './controllers/LoginController'
 
 
 const app = express()
@@ -14,6 +16,7 @@ const app = express()
 
 
  app.use(router)
+ app.use(controllerRouter)
 
 
 app.listen(4000, () => {
